@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-angular-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: spring-angular-app
+  template:
+    metadata:
+      labels:
+        app: spring-angular-app
+    spec:
+      containers:
+        - name: spring-backend
+          image: spring-boot-angular-17-postgresql-example-backend
+          ports:
+            - containerPort: 8080
+        - name: angular-frontend
+          image: spring-boot-angular-17-postgresql-example-frontend
+          ports:
+            - containerPort: 80
